@@ -13,7 +13,7 @@
               function(err) { console.error("Error signing in", err); });
   }
   function loadClient() {
-    gapi.client.setApiKey("YOUR_API_KEY");
+    gapi.client.setApiKey("AIzaSyAHaAue4T-mbvJFoCy1sv7NaBDwm4VkBwk");
     return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
@@ -22,22 +22,15 @@
   function execute() {
     return gapi.client.youtube.liveBroadcasts.insert({
       "part": [
-        "snippet,contentDetails,status"
+        "snippet,status"
       ],
       "resource": {
         "snippet": {
           "title": "Test broadcast",
-          "scheduledStartTime": "YOUR_SCHEDULED_START_TIME",
-          "scheduledEndTime": "YOUR_SCHEDULED_END_TIME"
+          "scheduledStartTime": "2020-12-11T9:00:00.00",
+          "scheduledEndTime": "2020-12-11T9:00:10.00"
         },
-        "contentDetails": {
-          "enableClosedCaptions": true,
-          "enableContentEncryption": true,
-          "enableDvr": true,
-          "enableEmbed": true,
-          "recordFromStart": true,
-          "startWithSlate": true
-        },
+        
         "status": {
           "privacyStatus": "unlisted"
         }
@@ -50,7 +43,7 @@
               function(err) { console.error("Execute error", err); });
   }
   gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: "YOUR_CLIENT_ID"});
+    gapi.auth2.init({client_id: "817725367472-vt0kqvce02ab4utaoj2t6vrbudqsdred.apps.googleusercontent.com"});
   });
 </script>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
